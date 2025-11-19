@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warren Kabuchi - AI Engineer</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-dark': '#111827', // Deep dark gray background
+                        'brand-red': '#EF4444',   // Bright "digital" red accent
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Small CSS tweaks for scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151; /* gray-700 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5563; /* gray-600 */
+        }
+    </style>
+</head>
+
+<body class="bg-brand-dark text-gray-200 font-sans antialiased">
+
+    <header class="sticky top-0 z-50 w-full bg-brand-dark/80 backdrop-blur-sm border-b border-gray-800">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-2xl font-bold text-white">Warren Kabuchi</a>
+                </div>
+                
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-brand-red transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="#projects" class="text-gray-300 hover:text-brand-red transition-colors px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                    <a href="#blog" class="text-gray-300 hover:text-brand-red transition-colors px-3 py-2 rounded-md text-sm font-medium">Blog</a>
+                    <a href="#contact" class="text-gray-300 hover:text-brand-red transition-colors px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="nav-link-mobile text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#projects" class="nav-link-mobile text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#blog" class="nav-link-mobile text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="#contact" class="nav-link-mobile text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="home" class="min-h-screen flex items-center pt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="max-w-3xl">
+                    <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight">
+                        Warren Kabuchi
+                    </h1>
+                    <h2 class="text-2xl sm:text-4xl font-semibold text-brand-red mt-2">
+                        AI Engineer & Machine Learning Specialist
+                    </h2>
+                    <p class="mt-6 text-xl text-gray-300 max-w-2xl">
+                        Building intelligent solutions for complex problems.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                        <a href="#projects" class="inline-block bg-brand-red text-white font-semibold px-8 py-3 rounded-md text-center hover:bg-red-700 transition-colors shadow-lg shadow-brand-red/20">
+                            View Projects
+                        </a>
+                        <a href="#_YOUR_RESUME_LINK.pdf" download class="inline-block bg-transparent border-2 border-gray-500 text-gray-300 font-semibold px-8 py-3 rounded-md text-center hover:bg-gray-800 hover:border-gray-800 transition-colors">
+                            Download Resume
+                        </a>
+                    </div>
+                    <div class="mt-10 flex items-center gap-6">
+                        <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-red transition-colors" aria-label="GitHub">
+                            <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/warrenkabuchi/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-red transition-colors" aria-label="LinkedIn">
+                            <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-24 sm:py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
+                    
+                    <div class="lg:col-span-2">
+                        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-6">About Me</h2>
+                        <div id="about-content" class="space-y-6 text-lg text-gray-300">
+                            <p>
+                                I am a results-driven AI Engineer with over 5 years of experience specializing in machine learning, deep learning, and natural language processing. My passion lies in transforming complex data into actionable insights and building intelligent systems that solve real-world problems.
+                            </p>
+                            <p>
+                                From developing recommendation engines for e-commerce platforms to deploying computer vision models for autonomous systems, I thrive in fast-paced environments where I can leverage cutting-edge technology. I am proficient in the full ML lifecycle, from data preprocessing and model training to MLOps and cloud deployment.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold text-white sm:text-3xl mb-6">Core Tech Stack</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">GCP</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">FastAPI</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 sm:py-32 bg-gray-900/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-16 text-center">Featured Projects</h2>
+                
+                <div id="project-content" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <div class="project-card md:col-span-2 md:row-span-2 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-3">Generative AI Customer Support Bot</h3>
+                            <p class="text-gray-400 mb-4">
+                                A RAG (Retrieval-Augmented Generation) chatbot built with LangChain and Streamlit to answer customer queries based on a knowledge base of 500+ technical documents. Reduced support ticket volume by 30%.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="project-tag">LangChain</span>
+                                <span class="project-tag">Gemini API</span>
+                                <span class="project-tag">Streamlit</span>
+                                <span class="project-tag">FAISS</span>
+                                <span class="project-tag">NLP</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#" class="project-link" aria-label="GitHub Repo">
+                                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                                    <span>GitHub Repo</span>
+                                </a>
+                                <a href="#" class="project-link" aria-label="Live Demo">
+                                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    <span>Live Demo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="text-xl font-bold text-white mb-3">Real-Time Object Detection</h3>
+                        <p class="text-gray-400 mb-4">
+                            Implemented and optimized a YOLOv8 model for real-time object detection on edge devices (Jetson Nano).
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="project-tag">PyTorch</span>
+                            <span class="project-tag">OpenCV</span>
+                            <span class="project-tag">YOLOv8</span>
+                            <span class="project-tag">Edge AI</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="project-link" aria-label="GitHub Repo">
+                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                                <span>GitHub Repo</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="text-xl font-bold text-white mb-3">MLOps Pipeline on GCP</h3>
+                        <p class="text-gray-400 mb-4">
+                            Designed a full MLOps pipeline using GCP services (Vertex AI, GCS, Kubeflow) for automated model training, versioning, and deployment.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="project-tag">GCP</span>
+                            <span class="project-tag">Vertex AI</span>
+                            <span class="project-tag">Kubeflow</span>
+                            <span class="project-tag">MLOps</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="project-link" aria-label="GitHub Repo">
+                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                                <span>GitHub Repo</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card md:col-span-3">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="md:col-span-2">
+                                <h3 class="text-xl font-bold text-white mb-3">Time-Series Anomaly Detection</h3>
+                                <p class="text-gray-400 mb-4">
+                                    Developed an LSTM-based autoencoder to detect anomalies in real-time IoT sensor data, improving predictive maintenance alerts.
+                                </p>
+                            </div>
+                            <div>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="project-tag">TensorFlow</span>
+                                    <span class="project-tag">Keras</span>
+                                    <span class="project-tag">LSTM</span>
+                                    <span class="project-tag">IoT</span>
+                                    <span class="project-tag">Time-Series</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <a href="#" class="project-link" aria-label="GitHub Repo">
+                                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                                        <span>GitHub Repo</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <section id="ai-assistant" class="py-24 sm:py-32">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-4 text-center">AI Career Assistant</h2>
+                <p class="text-lg text-gray-400 text-center mb-10">
+                    Ask my AI assistant questions about my skills, projects, and experience. 
+                </p>
+
+                <div class="bg-yellow-900/50 border border-yellow-700 text-yellow-200 px-4 py-3 rounded-lg mb-8" role="alert">
+                    <strong class="font-bold">Developer Note: </strong>
+                    <span class="block sm:inline">The AI chat is configured for demo purposes. Do not expose your Gemini API key on a public website.</span>
+                </div>
+                
+
+                <div class="bg-gray-900/50 border border-gray-800 rounded-lg shadow-2xl">
+                    <div id="chat-window" class="h-96 p-4 md:p-6 space-y-4 overflow-y-auto flex flex-col">
+                        <div class="chat-bubble-model">
+                            <p>Hello! I'm Warren's AI assistant. I can answer questions about his skills and projects based on the information from this website. What would you like to know?</p>
+                        </div>
+                    </div>
+                    
+                    <div id="chat-status" class="px-4 md:px-6 pt-2 text-sm text-gray-500 hidden">
+                        AI is thinking...
+                    </div>
+
+                    <form id="chat-form" class="p-4 md:p-6 border-t border-gray-800 flex items-center gap-3">
+                        <input type="text" id="chat-input" placeholder="e.g., What is his experience with PyTorch?" class="form-input" required>
+                        <button type="submit" id="chat-submit" class="button-primary p-3">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                            <span class="sr-only">Send</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="py-24 sm:py-32 bg-gray-900/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-16 text-center">Blog & Tech Notes</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <a href="#" class="blog-card">
+                        <h3 class="text-xl font-bold text-white mb-3">The Rise of RAG: Beyond Simple Embeddings</h3>
+                        <p class="text-gray-400">
+                            A deep dive into advanced Retrieval-Augmented Generation techniques for building smarter, context-aware LLM applications...
+                        </p>
+                    </a>
+                    
+                    <a href="#" class="blog-card">
+                        <h3 class="text-xl font-bold text-white mb-3">Optimizing YOLOv8 for Edge Devices</h3>
+                        <p class="text-gray-400">
+                            From model quantization to TensorRT, here's a step-by-step guide on how I achieved real-time performance on a Jetson Nano...
+                        </p>
+                    </a>
+                    
+                    <a href="#" class="blog-card">
+                        <h3 class="text-xl font-bold text-white mb-3">My MLOps Philosophy: GCP vs. AWS</h3>
+                        <p class="text-gray-400">
+                            Comparing the MLOps ecosystems of the two cloud giants, focusing on Vertex AI and SageMaker Studio...
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="py-24 sm:py-32">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-4 text-center">Get In Touch</h2>
+                <p class="text-lg text-gray-400 text-center mb-10">
+                    Have a question or want to collaborate? Send me a message.
+                </p>
+                
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="sr-only">Name</label>
+                        <input type="text" name="name" id="name" autocomplete="name" placeholder="Your Name" required class="form-input">
+                    </div>
+                    <div>
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" name="email" id="email" autocomplete="email" placeholder="Your Email" required class="form-input">
+                    </div>
+                    <div>
+                        <label for="message" class="sr-only">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required class="form-input"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="button-primary w-full sm:w-auto">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900/50 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex gap-6">
+                    <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-red transition-colors" aria-label="GitHub">
+                        <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-red transition-colors" aria-label="LinkedIn">
+                        <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-gray-500 text-sm">
+                    &copy; 2025 Warren Kabuchi. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <style>
+        .skill-tag {
+            @apply bg-gray-800 text-gray-300 px-4 py-2 rounded-full text-sm font-medium transition-colors hover:bg-brand-red/20 hover:text-brand-red;
+        }
+        .project-card {
+            @apply bg-brand-dark p-6 rounded-lg border border-gray-800 hover:border-brand-red transition-all group shadow-lg;
+        }
+        .project-tag {
+            @apply bg-brand-red/10 text-brand-red px-3 py-1 rounded-full text-xs font-semibold;
+        }
+        .project-link {
+            @apply inline-flex items-center gap-2 text-gray-400 hover:text-brand-red font-medium transition-colors;
+        }
+        .blog-card {
+            @apply block bg-brand-dark p-6 rounded-lg border border-gray-800 hover:border-brand-red transition-all group shadow-lg;
+        }
+        .form-input {
+            @apply block w-full rounded-md border-0 bg-gray-800 px-4 py-3 text-white shadow-sm ring-1 ring-inset ring-gray-700 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-brand-red sm:text-sm sm:leading-6 transition-all;
+        }
+        .button-primary {
+            @apply bg-brand-red text-white font-semibold px-6 py-3 rounded-md text-center hover:bg-red-700 transition-colors shadow-lg shadow-brand-red/20 disabled:opacity-50;
+        }
+        .chat-bubble-model {
+            @apply self-start bg-gray-800 text-gray-200 p-3 rounded-lg max-w-[85%] shadow;
+        }
+        .chat-bubble-user {
+            @apply self-end bg-brand-red text-white p-3 rounded-lg max-w-[85%] shadow;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Mobile Menu Toggle ---
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = menuButton.querySelector('svg:first-child');
+            const closeIcon = menuButton.querySelector('svg:last-child');
+            
+            menuButton.addEventListener('click', () => {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                hamburgerIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+            
+            // --- Smooth Scrolling & Close Mobile Menu on Nav ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // If it's a mobile nav link, close the menu
+                    if (this.classList.contains('nav-link-mobile')) {
+                        menuButton.click();
+                    }
+                });
+            });
+
+
+            // --- AI Chat Assistant Logic ---
+            const chatForm = document.getElementById('chat-form');
+            const chatInput = document.getElementById('chat-input');
+            const chatSubmit = document.getElementById('chat-submit');
+            const chatWindow = document.getElementById('chat-window');
+            const chatStatus = document.getElementById('chat-status');
+
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // WARNING: DO NOT EXPOSE YOUR API KEY
+            // This key is visible to anyone viewing your website's source code.
+            // For production, use a backend function to secure this key.
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            const GEMINI_API_KEY = 'AIzaSyAEAIy5IMEj1Qc-Qd1B_EbNE6d6G7si9m0'; 
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+
+            // 1. Get website content to use as context for the AI
+            const aboutText = document.getElementById('about-content').innerText;
+            const projectCards = document.querySelectorAll('.project-card');
+            let projectText = '';
+            projectCards.forEach(card => {
+                projectText += card.innerText + '\n\n';
+            });
+
+            const websiteContext = `
+                About Warren Kabuchi:
+                ${aboutText}
+
+                Warren's Projects:
+                ${projectText}
+            `;
+
+            // 2. Define the System Prompt
+            const systemPrompt = `You are a professional AI Career Assistant for Warren Kabuchi. Your sole purpose is to answer questions from recruiters and tech managers about Warren's skills, experience, and projects.
+
+            Your knowledge is STRICTLY LIMITED to the context provided below. DO NOT make up information, and DO NOT answer questions unrelated to Warren's career.
+
+            If a question cannot be answered from the context, politely state that you only have information from this website and suggest they contact Warren directly for more details.
+
+            Context:
+            ---
+            ${websiteContext}
+            ---
+            `;
+
+            // 3. Initialize conversation history
+            let conversationHistory = [
+                {
+                    role: "user",
+                    parts: [{ text: systemPrompt }]
+                },
+                {
+                    role: "model",
+                    parts: [{ text: "Understood. I am Warren's AI assistant and will only answer questions based on the provided context about his skills and projects." }]
+                }
+            ];
+
+            // 4. Handle Form Submission
+            chatForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const userInput = chatInput.value.trim();
+                
+                if (!userInput) return;
+                
+                // Disable form
+                setLoadingState(true, 'AI is thinking...');
+                
+                // Add user message to UI
+                addMessageToChat('user', userInput);
+                
+                // Add user message to history
+                conversationHistory.push({
+                    role: 'user',
+                    parts: [{ text: userInput }]
+                });
+
+                try {
+                    // 5. Call Gemini API
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            contents: conversationHistory,
+                            generationConfig: {
+                                temperature: 0.5,
+                                topK: 1,
+                                topP: 1,
+                                maxOutputTokens: 2048,
+                            },
+                        }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API Error: ${response.statusText}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    if (!data.candidates || !data.candidates[0].content) {
+                         throw new Error('Invalid API response structure.');
+                    }
+                    
+                    const aiResponse = data.candidates[0].content.parts[0].text;
+
+                    // Add AI response to UI and history
+                    addMessageToChat('model', aiResponse);
+                    conversationHistory.push({
+                        role: 'model',
+                        parts: [{ text: aiResponse }]
+                    });
+
+                } catch (error) {
+                    console.error('AI Chat Error:', error);
+                    addMessageToChat('model', 'Sorry, I encountered an error. Please try again later.');
+                    setLoadingState(false, 'Error connecting to AI.', true);
+                } finally {
+                    // Re-enable form
+                    if (chatStatus.textContent !== 'Error connecting to AI.') {
+                         setLoadingState(false, '');
+                    }
+                    chatInput.value = '';
+                    chatInput.focus();
+                }
+            });
+
+            // 6. Helper Functions
+            function addMessageToChat(role, text) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = role === 'user' ? 'chat-bubble-user' : 'chat-bubble-model';
+                
+                // Sanitize text before setting innerHTML (basic version)
+                // For a real app, use a proper sanitization library like DOMPurify
+                const sanitizedText = text.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
+                messageDiv.innerHTML = `<p>${sanitizedText}</p>`;
+                
+                chatWindow.appendChild(messageDiv);
+                chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll
+            }
+
+            function setLoadingState(isLoading, message, isError = false) {
+                chatInput.disabled = isLoading;
+                chatSubmit.disabled = isLoading;
+                
+                if (isLoading) {
+                    chatStatus.textContent = message;
+                    chatStatus.classList.remove('hidden');
+                    chatStatus.classList.toggle('text-red-500', isError);
+                    chatStatus.classList.toggle('text-gray-500', !isError);
+                } else {
+                    if (!isError) {
+                         chatStatus.classList.add('hidden');
+                    } else {
+                        chatStatus.textContent = message;
+                        chatStatus.classList.add('text-red-500');
+                        chatStatus.classList.remove('hidden', 'text-gray-500');
+                    }
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
