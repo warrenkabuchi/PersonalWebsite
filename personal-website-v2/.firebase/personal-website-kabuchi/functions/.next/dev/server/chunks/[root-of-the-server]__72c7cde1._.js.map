@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 40, "column": 0}, "map": {"version":3,"sources":["file:///Users/kabuchi/Documents/Personal%20Website/personal-website-v2/app/api/test-env/route.ts"],"sourcesContent":["import { NextResponse } from \"next/server\";\n\nexport async function GET() {\n    console.log(\"Checking env vars...\");\n    return NextResponse.json({\n        hasResendKey: !!process.env.RESEND_API_KEY,\n        resendKeyPrefix: process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.substring(0, 5) : null,\n        hasMyEmail: !!process.env.MY_EMAIL,\n    });\n}\n"],"names":[],"mappings":";;;;AAAA;;AAEO,eAAe;IAClB,QAAQ,GAAG,CAAC;IACZ,OAAO,6KAAY,CAAC,IAAI,CAAC;QACrB,cAAc,CAAC,CAAC,QAAQ,GAAG,CAAC,cAAc;QAC1C,iBAAiB,QAAQ,GAAG,CAAC,cAAc,GAAG,QAAQ,GAAG,CAAC,cAAc,CAAC,SAAS,CAAC,GAAG,KAAK;QAC3F,YAAY,CAAC,CAAC,QAAQ,GAAG,CAAC,QAAQ;IACtC;AACJ"}}]
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warren Kabuchi - Travel & Perspectives</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-dark': '#111827',
+                        'brand-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-brand-dark text-gray-200 font-sans antialiased">
+
+    <header class="sticky top-0 z-50 w-full bg-brand-dark/80 backdrop-blur-sm border-b border-gray-800">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="/" class="text-2xl font-bold text-white">Warren Kabuchi</a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="/ai"
+                        class="text-gray-300 hover:text-brand-red transition-colors px-3 py-2 rounded-md text-sm font-medium">AI
+                        & Governance</a>
+                    <a href="/dj"
+                        class="text-gray-300 hover:text-purple-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">DJ
+                        Sets</a>
+                    <a href="/travel"
+                        class="text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Travel</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-400 hover:text-white">
+                        <svg class="block h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="travel" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl mb-6">
+                        Wanderlust & Perspectives
+                    </h1>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                        Exploring the world to understand different cultures, architectures, and ways of thinking.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Travel Card 1 -->
+                    <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Kyoto, Japan"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90">
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span
+                                class="text-xs font-bold text-brand-red uppercase tracking-wider mb-2 block">Japan</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Kyoto's Quiet Corners</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2">Finding peace in the ancient temples and
+                                bamboo forests, contrasting with the neon lights of Tokyo.</p>
+                        </div>
+                    </div>
+
+                    <!-- Travel Card 2 -->
+                    <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Cinque Terre, Italy"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90">
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span
+                                class="text-xs font-bold text-brand-red uppercase tracking-wider mb-2 block">Italy</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Colors of Cinque Terre</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2">Hiking the rugged coastline and discovering
+                                the vibrant culture of Italian coastal villages.</p>
+                        </div>
+                    </div>
+
+                    <!-- Travel Card 3 -->
+                    <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Venice, Italy"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90">
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span
+                                class="text-xs font-bold text-brand-red uppercase tracking-wider mb-2 block">Venice</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Canals & History</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2">Getting lost in the labyrinth of canals and
+                                bridges, soaking in the history of a floating city.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900/50 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex justify-between items-center">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2025 Warren Kabuchi.
+                </p>
+                <div class="flex gap-6">
+                    <a href="https://linkedin.com/in/warrenkabuchi/"
+                        class="text-gray-400 hover:text-brand-red">LinkedIn</a>
+                    <a href="https://github.com/warrenkabuchi" class="text-gray-400 hover:text-brand-red">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

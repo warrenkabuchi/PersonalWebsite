@@ -1,0 +1,8 @@
+1:"$Sreact.fragment"
+2:I[98007,["/_next/static/chunks/d8ddd80765370b53.js","/_next/static/chunks/b6c771072b6b7fb6.js"],"ViewportBoundary"]
+4:I[98007,["/_next/static/chunks/d8ddd80765370b53.js","/_next/static/chunks/b6c771072b6b7fb6.js"],"MetadataBoundary"]
+5:"$Sreact.suspense"
+7:I[75175,["/_next/static/chunks/d8ddd80765370b53.js","/_next/static/chunks/b6c771072b6b7fb6.js"],"IconMark"]
+0:{"buildId":"gU48oDacPCzxpMPGkeF1F","rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
+3:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:[["$","title","0",{"children":"Warren Kabuchi | AI Engineer & Cloud Architect"}],["$","meta","1",{"name":"description","content":"Portfolio of Warren Kabuchi - AI Engineer, Cloud Architect, and DJ."}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L7","3",{}]]

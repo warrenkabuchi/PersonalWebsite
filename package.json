@@ -1,0 +1,13 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "Warren Kabuchi's Personal Website",
+  "scripts": {
+    "dev": "serve .",
+    "deploy": "firebase deploy"
+  },
+  "devDependencies": {
+    "firebase-tools": "^13.0.0",
+    "serve": "^14.2.1"
+  }
+}

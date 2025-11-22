@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warren Kabuchi - Sonic Journeys</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-dark': '#111827',
+                        'brand-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-black text-gray-200 font-sans antialiased">
+
+    <header class="sticky top-0 z-50 w-full bg-black/80 backdrop-blur-sm border-b border-gray-800">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="/" class="text-2xl font-bold text-white">Warren Kabuchi</a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="/ai"
+                        class="text-gray-300 hover:text-brand-red transition-colors px-3 py-2 rounded-md text-sm font-medium">AI
+                        & Governance</a>
+                    <a href="/dj" class="text-purple-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">DJ
+                        Sets</a>
+                    <a href="/travel"
+                        class="text-gray-300 hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Travel</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-400 hover:text-white">
+                        <svg class="block h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="relative overflow-hidden min-h-screen">
+        <!-- Background Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24">
+            <div class="text-center mb-16">
+                <h1
+                    class="text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 sm:text-7xl mb-6">
+                    Sonic Journeys
+                </h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Exploring the intersection of rhythm and algorithm. Deep House, Melodic Techno, and Afro-Tech.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Mix 1 -->
+                <div
+                    class="bg-gray-900/80 border border-gray-800 rounded-xl p-6 hover:border-purple-500/50 transition-all group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-purple-500/20">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">Deep
+                                House Sessions Vol. 1</h3>
+                            <p class="text-gray-500">Melodic Techno / Deep House</p>
+                        </div>
+                    </div>
+                    <div
+                        class="w-full h-40 bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 text-sm">
+                        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                    </div>
+                </div>
+
+                <!-- Mix 2 -->
+                <div
+                    class="bg-gray-900/80 border border-gray-800 rounded-xl p-6 hover:border-blue-500/50 transition-all group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/20">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                                Afro-Tech Rhythms</h3>
+                            <p class="text-gray-500">Afro House / Tribal</p>
+                        </div>
+                    </div>
+                    <div
+                        class="w-full h-40 bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 text-sm">
+                        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900/50 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex justify-between items-center">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2025 Warren Kabuchi.
+                </p>
+                <div class="flex gap-6">
+                    <a href="https://linkedin.com/in/warrenkabuchi/"
+                        class="text-gray-400 hover:text-brand-red">LinkedIn</a>
+                    <a href="https://github.com/warrenkabuchi" class="text-gray-400 hover:text-brand-red">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

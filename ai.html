@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warren Kabuchi - AI & Governance</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-dark': '#111827', // Deep dark gray background
+                        'brand-red': '#EF4444',   // Bright "digital" red accent
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-brand-dark text-gray-200 font-sans antialiased">
+
+    <header class="sticky top-0 z-50 w-full bg-brand-dark/80 backdrop-blur-sm border-b border-gray-800">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="/" class="text-2xl font-bold text-white">Warren Kabuchi</a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="/ai" class="text-brand-red transition-colors px-3 py-2 rounded-md text-sm font-medium">AI &
+                        Governance</a>
+                    <a href="/dj"
+                        class="text-gray-300 hover:text-purple-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">DJ
+                        Sets</a>
+                    <a href="/travel"
+                        class="text-gray-300 hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Travel</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="home" class="min-h-[60vh] flex items-center pt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="max-w-3xl">
+                    <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight">
+                        AI Agents & <br>
+                        <span class="text-brand-red">Enterprise Governance</span>
+                    </h1>
+                    <p class="mt-6 text-xl text-gray-300 max-w-2xl">
+                        Specializing in Microsoft Copilot Studio, AI Foundry, and Purview. I build secure, scalable AI
+                        agents and implement robust governance frameworks using PPAC.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                        <a href="#projects"
+                            class="inline-block bg-brand-red text-white font-semibold px-8 py-3 rounded-md text-center hover:bg-red-700 transition-colors shadow-lg shadow-brand-red/20">
+                            View Case Studies
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stack" class="py-12 bg-gray-900/30 border-y border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-lg font-semibold text-gray-400 mb-6 uppercase tracking-wider">Core Technology Stack</h3>
+                <div class="flex flex-wrap gap-4">
+                    <span class="skill-tag border border-gray-700">Microsoft Copilot Studio</span>
+                    <span class="skill-tag border border-gray-700">Azure AI Foundry</span>
+                    <span class="skill-tag border border-gray-700">Microsoft Purview</span>
+                    <span class="skill-tag border border-gray-700">Power Platform Admin Center (PPAC)</span>
+                    <span class="skill-tag border border-gray-700">Azure OpenAI</span>
+                    <span class="skill-tag border border-gray-700">RAG Architectures</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 sm:py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-16">Featured Work</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <div class="project-card">
+                        <h3 class="text-2xl font-bold text-white mb-3">Enterprise Governance Framework</h3>
+                        <p class="text-gray-400 mb-4">
+                            Designed and implemented a comprehensive AI governance strategy using Microsoft Purview and
+                            PPAC. Established data loss prevention (DLP) policies, access controls, and auditing for
+                            Copilot deployments across the organization.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="project-tag">Microsoft Purview</span>
+                            <span class="project-tag">PPAC</span>
+                            <span class="project-tag">Governance</span>
+                            <span class="project-tag">Security</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="text-2xl font-bold text-white mb-3">HR & IT Support Agent</h3>
+                        <p class="text-gray-400 mb-4">
+                            Built a sophisticated internal agent using Microsoft Copilot Studio and Azure AI Foundry.
+                            The agent automates 60% of routine HR and IT requests by integrating with ServiceNow and
+                            Workday via custom connectors.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="project-tag">Copilot Studio</span>
+                            <span class="project-tag">Azure AI Foundry</span>
+                            <span class="project-tag">ServiceNow Integration</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="text-2xl font-bold text-white mb-3">Azure AI Foundry RAG Pipeline</h3>
+                        <p class="text-gray-400 mb-4">
+                            Developed a custom RAG pipeline in Azure AI Foundry to ground LLM responses in proprietary
+                            company data, ensuring high accuracy and reduced hallucinations for critical business
+                            queries.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="project-tag">Azure AI Foundry</span>
+                            <span class="project-tag">RAG</span>
+                            <span class="project-tag">Python</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900/50 border-t border-gray-800 mt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex justify-between items-center">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2025 Warren Kabuchi.
+                </p>
+                <div class="flex gap-6">
+                    <a href="https://linkedin.com/in/warrenkabuchi/"
+                        class="text-gray-400 hover:text-brand-red">LinkedIn</a>
+                    <a href="https://github.com/warrenkabuchi" class="text-gray-400 hover:text-brand-red">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
