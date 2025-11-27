@@ -143,13 +143,18 @@ export function Navbar() {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="md:hidden p-2 hover:bg-secondary rounded transition-colors"
+                        className="md:hidden p-2 rounded border-3 transition-all hover:scale-105"
+                        style={{
+                            backgroundColor: comicColors.accent.yellow,
+                            borderColor: comicColors.neutral.darkest,
+                            boxShadow: `2px 2px 0 ${comicColors.neutral.darkest}`,
+                        }}
                         aria-label="Toggle menu"
                     >
                         {mobileMenuOpen ? (
-                            <X className="w-6 h-6" />
+                            <X className="w-6 h-6" style={{ color: comicColors.neutral.darkest }} />
                         ) : (
-                            <Menu className="w-6 h-6" />
+                            <Menu className="w-6 h-6" style={{ color: comicColors.neutral.darkest }} />
                         )}
                     </button>
                 </div>
