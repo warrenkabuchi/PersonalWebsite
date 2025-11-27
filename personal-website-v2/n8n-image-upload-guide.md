@@ -20,11 +20,25 @@ When generating images with Gemini in n8n, you can't directly pass the image bin
 **Configuration:**
 - **Method:** `POST`
 - **URL:** `https://personal-website-kabuchi.web.app/api/upload-image`
-- **Send Body:** Yes
-- **Body Content Type:** `Multipart-form Data`
-- **Body Parameters:**
-  - **Name:** `image`
-  - **Input Data Field Name:** `data` (or whatever your Gemini output is named)
+- **Send Body:** `Yes` (toggle ON)
+- **Body Content Type:** `Form-Data` *(this is multipart-form data in n8n)*
+
+**Body Parameters:**
+- Click "Add Parameter"
+- **Parameter Type:** `Form Data`
+- **Name:** `image`
+- **Value:** Click the expression icon and enter: `$binary.data`
+  - This references the binary image data from your Gemini node
+  - Make sure you're in expression mode (not fixed mode)
+
+**What the Gemini Node Outputs:**
+From your "Generate an Image" node, you'll see binary data with:
+- `mimeType`: image/png
+- `fileType`: image  
+- `fileName`: image.png
+- `fileSize`: (size in MB)
+
+The `$binary.data` expression automatically grabs this binary image data.
 
 **Response:**
 ```json

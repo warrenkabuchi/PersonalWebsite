@@ -6,12 +6,14 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { navigation } from "@/lib/site-content";
 import { comicColors } from "@/lib/design-tokens";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 
 export function Navbar() {
     const pathname = usePathname();
     const [activeSection, setActiveSection] = useState("");
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         if (pathname !== '/') return;
@@ -68,68 +70,150 @@ export function Navbar() {
         return pathname === path;
     };
 
+    const handleLinkClick = () => {
+        setMobileMenuOpen(false);
+    };
+
     return (
-        <motion.nav
-            className="fixed top-0 left-0 right-0 z-50 border-b-4 bg-background/95 backdrop-blur-md"
-            style={{ borderColor: comicColors.neutral.darkest }}
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        >
-            <div className="container max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                <Link
-                    href="/"
-                    className="font-display text-2xl tracking-tight hover:scale-105 transition-transform"
-                >
-                    <span className="text-foreground">Warren </span>
-                    <span style={{ color: comicColors.primary.red }}>Kabuchi</span>
-                </Link>
-
-                <div className="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wide text-muted-foreground">
-                    {navigation.links.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className={cn(
-                                "transition-all hover:scale-110 relative group",
-                                isActive(link.href) && "scale-110"
-                            )}
-                            style={{
-                                color: isActive(link.href)
-                                    ? link.theme === 'ai' ? comicColors.accent.cyan
-                                        : link.theme === 'dj' ? comicColors.accent.purple
-                                            : link.theme === 'travel' ? comicColors.secondary.blue
-                                                : comicColors.primary.red
-                                    : undefined
-                            }}
-                        >
-                            {link.label}
-                            {isActive(link.href) && (
-                                <motion.div
-                                    className="absolute -bottom-1 left-0 right-0 h-1 rounded-full"
-                                    style={{ backgroundColor: comicColors.accent.yellow }}
-                                    layoutId="navbar-indicator"
-                                />
-                            )}
-                        </Link>
-                    ))}
-                </div>
-
-                <Link href={navigation.cta.href}>
-                    <Button
-                        size="sm"
-                        className="font-bold uppercase tracking-wide border-3 transition-all hover:scale-105 hover:-rotate-2"
-                        style={{
-                            backgroundColor: comicColors.accent.yellow,
-                            color: comicColors.neutral.darkest,
-                            borderColor: comicColors.neutral.darkest,
-                            boxShadow: `3px 3px 0 ${comicColors.neutral.darkest}`,
-                        }}
+        <>
+            <motion.nav
+                className="fixed top-0 left-0 right-0 z-50 border-b-4 bg-background/95 backdrop-blur-md"
+                style={{ borderColor: comicColors.neutral.darkest }}
+                initial={{ y: -100 }}
+                animate={{ y: 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            >
+                <div className="container max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+                    <Link
+                        href="/"
+                        className="font-display text-2xl tracking-tight hover:scale-105 transition-transform"
                     >
-                        {navigation.cta.text}
-                    </Button>
-                </Link>
-            </div>
-        </motion.nav>
+                        <span className="text-foreground">Warren </span>
+                        <span style={{ color: comicColors.primary.red }}>Kabuchi</span>
+                    </Link>
+
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wide text-muted-foreground">
+                        {navigation.links.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className={cn(
+                                    "transition-all hover:scale-110 relative group",
+                                    isActive(link.href) && "scale-110"
+                                )}
+                                style={{
+                                    color: isActive(link.href)
+                                        ? link.theme === 'ai' ? comicColors.accent.cyan
+                                            : link.theme === 'dj' ? comicColors.accent.purple
+                                                : link.theme === 'travel' ? comicColors.secondary.blue
+                                                    : comicColors.primary.red
+                                        : undefined
+                                }}
+                            >
+                                {link.label}
+                                {isActive(link.href) && (
+                                    <motion.div
+                                        className="absolute -bottom-1 left-0 right-0 h-1 rounded-full"
+                                        style={{ backgroundColor: comicColors.accent.yellow }}
+                                        layoutId="navbar-indicator"
+                                    />
+                                )}
+                            </Link>
+                        ))}
+                    </div>
+
+                    <div className="hidden md:block">
+                        <Link href={navigation.cta.href}>
+                            <Button
+                                size="sm"
+                                className="font-bold uppercase tracking-wide border-3 transition-all hover:scale-105 hover:-rotate-2"
+                                style={{
+                                    backgroundColor: comicColors.accent.yellow,
+                                    color: comicColors.neutral.darkest,
+                                    borderColor: comicColors.neutral.darkest,
+                                    boxShadow: `3px 3px 0 ${comicColors.neutral.darkest}`,
+                                }}
+                            >
+                                {navigation.cta.text}
+                            </Button>
+                        </Link>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        className="md:hidden p-2 hover:bg-secondary rounded transition-colors"
+                        aria-label="Toggle menu"
+                    >
+                        {mobileMenuOpen ? (
+                            <X className="w-6 h-6" />
+                        ) : (
+                            <Menu className="w-6 h-6" />
+                        )}
+                    </button>
+                </div>
+            </motion.nav>
+
+            {/* Mobile Menu Overlay */}
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                            onClick={() => setMobileMenuOpen(false)}
+                        />
+                        <motion.div
+                            initial={{ x: "100%" }}
+                            animate={{ x: 0 }}
+                            exit={{ x: "100%" }}
+                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                            className="fixed top-16 right-0 bottom-0 w-64 bg-background border-l-4 z-40 md:hidden p-6"
+                            style={{ borderColor: comicColors.neutral.darkest }}
+                        >
+                            <div className="flex flex-col gap-6">
+                                {navigation.links.map((link) => (
+                                    <Link
+                                        key={link.href}
+                                        href={link.href}
+                                        onClick={handleLinkClick}
+                                        className={cn(
+                                            "text-lg font-bold uppercase tracking-wide transition-all",
+                                            isActive(link.href) && "scale-105"
+                                        )}
+                                        style={{
+                                            color: isActive(link.href)
+                                                ? link.theme === 'ai' ? comicColors.accent.cyan
+                                                    : link.theme === 'dj' ? comicColors.accent.purple
+                                                        : link.theme === 'travel' ? comicColors.secondary.blue
+                                                            : comicColors.primary.red
+                                                : comicColors.neutral.darkest
+                                        }}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                ))}
+                                <Link href={navigation.cta.href} onClick={handleLinkClick}>
+                                    <Button
+                                        className="w-full font-bold uppercase tracking-wide border-3"
+                                        style={{
+                                            backgroundColor: comicColors.accent.yellow,
+                                            color: comicColors.neutral.darkest,
+                                            borderColor: comicColors.neutral.darkest,
+                                            boxShadow: `3px 3px 0 ${comicColors.neutral.darkest}`,
+                                        }}
+                                    >
+                                        {navigation.cta.text}
+                                    </Button>
+                                </Link>
+                            </div>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+        </>
     );
 }
