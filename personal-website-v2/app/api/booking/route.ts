@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(request: Request) {
     try {
@@ -55,22 +55,45 @@ export async function POST(request: Request) {
       `;
         }
 
-        // Send Email Notification (to you)
-        const emailResponse = await resend.emails.send({
-            from: "Booking Request <onboarding@resend.dev>", // Update this once you have a domain
-            to: process.env.MY_EMAIL || "delivered@resend.dev",
-            subject: subject,
-            html: htmlContent,
-        });
+        // Log to console (for development/testing)
+        console.log("\n=== NEW FORM SUBMISSION ===");
+        console.log("Subject:", subject);
+        console.log("Content:", htmlContent);
+        console.log("===========================\n");
 
-        if (emailResponse.error) {
-            console.error("Resend Error:", emailResponse.error);
-            return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+        // If Resend is configured, send the email
+        if (resend) {
+            try {
+                const emailResponse = await resend.emails.send({
+                    from: "Booking Request <onboarding@resend.dev>",
+                    to: process.env.MY_EMAIL || "delivered@resend.dev",
+                    subject: subject,
+                    html: htmlContent,
+                });
+
+                if (emailResponse.error) {
+                    console.error("Resend Error:", emailResponse.error);
+                    // Don't fail the whole request, just log it
+                }
+            } catch (emailError) {
+                console.error("Email sending error:", emailError);
+                // Don't fail the whole request
+            }
+        } else {
+            console.log("⚠️  Resend API key not configured. Email would have been sent.");
         }
 
-        return NextResponse.json({ success: true, message: "Booking request received" });
+        // Always return success (form submission logged to console)
+        return NextResponse.json({
+            success: true,
+            message: "Request received successfully"
+        });
+
     } catch (error) {
         console.error("Booking Error:", error);
-        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+        return NextResponse.json({
+            error: "Failed to process request",
+            details: error instanceof Error ? error.message : "Unknown error"
+        }, { status: 500 });
     }
 }
