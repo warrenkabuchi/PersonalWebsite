@@ -33,8 +33,8 @@ export async function POST(request: Request) {
         const timestamp = Date.now();
         const filename = `${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
 
-        // EXPLICITLY specify the bucket - do not rely on defaults
-        const bucketName = 'personal-website-kabuchi.appspot.com';
+        // EXPLICITLY specify the bucket - use new Firebase Storage domain
+        const bucketName = 'personal-website-kabuchi.firebasestorage.app';
         const bucket = adminStorage.bucket(bucketName);
         const fileRef = bucket.file(`blog-images/${filename}`);
 
@@ -46,9 +46,11 @@ export async function POST(request: Request) {
             public: true, // Make file publicly accessible
         });
 
-        // Make the file public and get URL
+        // Make the file public and get URL  
         await fileRef.makePublic();
-        const publicUrl = `https://storage.googleapis.com/${bucketName}/blog-images/${filename}`;
+        // Use storage.googleapis.com for public URLs
+        const publicUrl = `https://storage.googleapis.com/personal-website-kabuchi.firebasestorage.app/blog-images/${filename}`;
+
 
         console.log("\n✅ Image uploaded successfully");
         console.log("Filename:", filename);

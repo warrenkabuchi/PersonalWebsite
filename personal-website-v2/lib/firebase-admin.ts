@@ -10,7 +10,7 @@ if (!admin.apps.length) {
                 // Handle newline characters in private key
                 privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
             }),
-            storageBucket: 'personal-website-kabuchi.appspot.com', // EXPLICIT bucket name
+            storageBucket: 'personal-website-kabuchi.firebasestorage.app', // Try new domain format
         });
         console.log('✅ Firebase Admin initialized successfully');
     } catch (error) {
