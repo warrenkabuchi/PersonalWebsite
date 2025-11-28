@@ -1,18 +1,9 @@
 import { NextResponse } from "next/server";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { app } from "@/lib/firebase";
+import { adminStorage } from "@/lib/firebase-admin";
 
 // Increase body size limit to 10MB for image uploads
-export const config = {
-    api: {
-        bodyParser: {
-            sizeLimit: '10mb',
-        },
-    },
-};
-
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
     try {
@@ -34,32 +25,38 @@ export async function POST(request: Request) {
             );
         }
 
-        // Convert File to ArrayBuffer then to Uint8Array
+        // Convert File to Buffer for Admin SDK
         const arrayBuffer = await file.arrayBuffer();
-        const buffer = new Uint8Array(arrayBuffer);
+        const buffer = Buffer.from(arrayBuffer);
 
         // Create unique filename
         const timestamp = Date.now();
         const filename = `${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
 
-        // Upload to Firebase Storage
-        const storage = getStorage(app);
-        const storageRef = ref(storage, `blog-images/${filename}`);
+        // EXPLICITLY specify the bucket - do not rely on defaults
+        const bucketName = 'personal-website-kabuchi.appspot.com';
+        const bucket = adminStorage.bucket(bucketName);
+        const fileRef = bucket.file(`blog-images/${filename}`);
 
-        await uploadBytes(storageRef, buffer, {
-            contentType: file.type,
+        // Upload the file
+        await fileRef.save(buffer, {
+            metadata: {
+                contentType: file.type,
+            },
+            public: true, // Make file publicly accessible
         });
 
-        // Get public URL
-        const downloadURL = await getDownloadURL(storageRef);
+        // Make the file public and get URL
+        await fileRef.makePublic();
+        const publicUrl = `https://storage.googleapis.com/${bucketName}/blog-images/${filename}`;
 
         console.log("\n✅ Image uploaded successfully");
         console.log("Filename:", filename);
-        console.log("URL:", downloadURL);
+        console.log("URL:", publicUrl);
 
         return NextResponse.json({
             success: true,
-            url: downloadURL,
+            url: publicUrl,
             filename: filename
         }, { status: 201 });
 
