@@ -248,7 +248,7 @@ export function AIContactForm() {
                     }}
                     disabled={isSubmitting}
                 >
-                    {isSubmitting ? "Sending..." : "Request Consultation"}
+                    {isSubmitting ? "Sending..." : "Let's Connect"}
                 </Button>
 
                 {responseMessage?.type === "error" && (

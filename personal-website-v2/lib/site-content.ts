@@ -21,7 +21,7 @@ export const navigation = {
         { href: '/#contact', label: 'Contact', theme: 'default' },
     ],
     cta: {
-        text: 'Hire Me',
+        text: 'Get In Touch',
         href: '/ai',
     },
 } as const;
@@ -131,7 +131,7 @@ export const skills = {
 
 export const contact = {
     title: 'Ready to Architect the Future?',
-    description: 'Whether you need to deploy autonomous agents, secure your cloud infrastructure, or just want to chat about the latest in AI—I\'m always open to new opportunities.',
+    description: 'Whether you need to deploy autonomous agents, secure your cloud infrastructure, or just want to chat about the latest in AI—I\'m here to help. Reach out below.',
     cta: {
         primary: {
             text: 'Email Me',

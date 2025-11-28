@@ -143,18 +143,18 @@ export function Navbar() {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="md:hidden p-2 rounded border-3 transition-all hover:scale-105"
+                        className="md:hidden p-3 rounded-lg border-4 transition-all hover:scale-110 active:scale-95"
                         style={{
-                            backgroundColor: comicColors.accent.yellow,
-                            borderColor: comicColors.neutral.darkest,
-                            boxShadow: `2px 2px 0 ${comicColors.neutral.darkest}`,
+                            backgroundColor: '#FFD700',
+                            borderColor: '#000000',
+                            boxShadow: `3px 3px 0 #000000`,
                         }}
                         aria-label="Toggle menu"
                     >
                         {mobileMenuOpen ? (
-                            <X className="w-6 h-6" style={{ color: comicColors.neutral.darkest }} />
+                            <X className="w-7 h-7" style={{ color: '#000000', strokeWidth: 3 }} />
                         ) : (
-                            <Menu className="w-6 h-6" style={{ color: comicColors.neutral.darkest }} />
+                            <Menu className="w-7 h-7" style={{ color: '#000000', strokeWidth: 3 }} />
                         )}
                     </button>
                 </div>
@@ -176,8 +176,11 @@ export function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed top-16 right-0 bottom-0 w-64 bg-background border-l-4 z-40 md:hidden p-6"
-                            style={{ borderColor: comicColors.neutral.darkest }}
+                            className="fixed top-16 right-0 bottom-0 w-64 border-l-4 z-40 md:hidden p-6"
+                            style={{
+                                borderColor: '#000000',
+                                backgroundColor: '#FFFEF0',
+                            }}
                         >
                             <div className="flex flex-col gap-6">
                                 {navigation.links.map((link) => (

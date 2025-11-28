@@ -72,7 +72,7 @@ export function AIPageClient({ posts }: AIPageClientProps) {
                                         boxShadow: `4px 4px 0 ${comicColors.neutral.darkest}`,
                                     }}
                                 >
-                                    Request Consultation
+                                    Let's Connect
                                 </Button>
                             </Link>
                             <Link href="#insights">

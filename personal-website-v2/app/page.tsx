@@ -37,6 +37,7 @@ import {
 } from "@/lib/site-content";
 import { comicColors } from "@/lib/design-tokens";
 import Balancer from "react-wrap-balancer";
+import { AIContactForm } from "@/components/ai-contact-form";
 
 export default function Home() {
   const fadeInUp = {
@@ -444,6 +445,17 @@ export default function Home() {
                 </Button>
               </a>
             </div>
+
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="pt-12 max-w-2xl mx-auto"
+            >
+              <AIContactForm />
+            </motion.div>
           </motion.div>
         </div>
       </section>
