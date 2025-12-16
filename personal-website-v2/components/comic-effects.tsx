@@ -2,6 +2,7 @@
  * Comic Book UI Components
  * Reusable components for comic book aesthetic
  */
+"use client";
 
 import React from 'react';
 import { motion, type HTMLMotionProps } from 'framer-motion';

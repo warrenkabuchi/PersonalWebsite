@@ -18,7 +18,7 @@ export function Navbar() {
     useEffect(() => {
         if (pathname !== '/') return;
 
-        const sections = ['experience', 'contact'];
+        const sections = ['about', 'experience', 'skills', 'contact'];
         const observers: IntersectionObserver[] = [];
 
         sections.forEach((sectionId) => {
@@ -34,8 +34,8 @@ export function Navbar() {
                     });
                 },
                 {
-                    rootMargin: '-20% 0px -60% 0px',
-                    threshold: 0.1
+                    rootMargin: '-30% 0px -50% 0px',
+                    threshold: 0.2
                 }
             );
 
@@ -43,17 +43,22 @@ export function Navbar() {
             observers.push(observer);
         });
 
-        // Check initial scroll position
+        // Check initial scroll position and hash
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
             // If near top, clear active section
-            if (scrollPosition < 100) {
+            if (scrollPosition < 200) {
                 setActiveSection("");
             }
         };
 
+        // Check for initial hash in URL
+        if (window.location.hash) {
+            setActiveSection(window.location.hash);
+        }
+
         handleScroll();
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
         return () => {
             observers.forEach((observer) => observer.disconnect());
@@ -62,9 +67,11 @@ export function Navbar() {
     }, [pathname]);
 
     const isActive = (path: string) => {
-        // For homepage sections with hashes
-        if (path.startsWith('#') && pathname === '/') {
-            return activeSection === path;
+        // For homepage sections with hashes (e.g., '/#experience', '/#contact')
+        if (path.startsWith('/#') && pathname === '/') {
+            // Extract the hash part (e.g., '#experience' from '/#experience')
+            const hash = path.substring(1); // Gets '#experience'
+            return activeSection === hash;
         }
         // For regular pages
         return pathname === path;

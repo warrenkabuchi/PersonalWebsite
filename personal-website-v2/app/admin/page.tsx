@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { db } from "@/lib/firebase";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { BlogPost } from "@/lib/types";
-import { Trash2, Eye, Plus } from "lucide-react";
+import { Trash2, Eye, Plus, X } from "lucide-react";
 import Link from "next/link";
 
 export default function AdminPage() {
@@ -13,6 +13,11 @@ export default function AdminPage() {
     const [posts, setPosts] = useState<(BlogPost & { id: string })[]>([]);
     const [loading, setLoading] = useState(false);
     const [showCreateForm, setShowCreateForm] = useState(false);
+    const [deleteModal, setDeleteModal] = useState<{ show: boolean; postId: string; postTitle: string }>({
+        show: false,
+        postId: "",
+        postTitle: "",
+    });
 
     const [formData, setFormData] = useState({
         title: "",
@@ -58,10 +63,17 @@ export default function AdminPage() {
         }
     };
 
-    const handleDelete = async (postId: string, postTitle: string) => {
-        if (!confirm(`Are you sure you want to delete "${postTitle}"?`)) {
-            return;
-        }
+    const openDeleteModal = (postId: string, postTitle: string) => {
+        setDeleteModal({ show: true, postId, postTitle });
+    };
+
+    const closeDeleteModal = () => {
+        setDeleteModal({ show: false, postId: "", postTitle: "" });
+    };
+
+    const confirmDelete = async () => {
+        const { postId } = deleteModal;
+        closeDeleteModal();
 
         try {
             const response = await fetch(`/api/posts/${postId}`, {
@@ -304,7 +316,12 @@ export default function AdminPage() {
                                         <Eye className="w-5 h-5" />
                                     </Link>
                                     <button
-                                        onClick={() => handleDelete(post.id, post.title)}
+                                        type="button"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            openDeleteModal(post.id, post.title);
+                                        }}
                                         className="p-3 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
                                         title="Delete post"
                                     >
@@ -316,6 +333,56 @@ export default function AdminPage() {
                     })}
                 </div>
             </div>
+
+            {/* Delete Confirmation Modal */}
+            {deleteModal.show && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center"
+                    onClick={closeDeleteModal}
+                >
+                    {/* Backdrop */}
+                    <div className="absolute inset-0 bg-black/70" />
+
+                    {/* Modal */}
+                    <div
+                        className="relative bg-white dark:bg-zinc-900 border-4 border-zinc-900 dark:border-white rounded-xl p-8 max-w-md w-full mx-4"
+                        style={{ boxShadow: '8px 8px 0 rgba(0,0,0,0.3)' }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="flex justify-between items-start mb-4">
+                            <h3 className="text-2xl font-display font-black text-zinc-900 dark:text-white">
+                                Confirm Delete
+                            </h3>
+                            <button
+                                type="button"
+                                onClick={closeDeleteModal}
+                                className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
+                            >
+                                <X className="w-5 h-5 text-zinc-900 dark:text-white" />
+                            </button>
+                        </div>
+                        <p className="text-zinc-600 dark:text-zinc-400 mb-8 text-lg">
+                            Are you sure you want to delete <strong className="text-zinc-900 dark:text-white">&quot;{deleteModal.postTitle}&quot;</strong>? This action cannot be undone.
+                        </p>
+                        <div className="flex gap-4">
+                            <button
+                                type="button"
+                                onClick={closeDeleteModal}
+                                className="flex-1 px-6 py-3 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-lg font-bold hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors border-2 border-zinc-300 dark:border-zinc-600"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                onClick={confirmDelete}
+                                className="flex-1 px-6 py-3 bg-red-600 text-white rounded-lg font-bold hover:bg-red-700 transition-colors border-2 border-red-700"
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

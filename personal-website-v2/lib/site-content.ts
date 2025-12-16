@@ -147,7 +147,7 @@ export const contact = {
 } as const;
 
 export const socialLinks = {
-    github: '#',
+    github: 'https://github.com/warrenkabuchi',
     linkedin: 'https://linkedin.com/in/warrenkabuchi',
     email: 'mailto:hello@warrenkabuchi.com',
 } as const;
@@ -182,6 +182,13 @@ export const aiPage = {
             icon: 'cloud',
         },
     ],
+    calendly: {
+        // Replace with your actual Calendly public URL
+        // Example: 'https://calendly.com/your-username/30min'
+        url: 'https://calendly.com/warrenkabuchi/coffee',
+        title: 'Schedule a Consultation',
+        description: 'Book a 30-minute discovery call to discuss your AI project. Choose a time that works best for you.',
+    },
 } as const;
 
 export const djPage = {

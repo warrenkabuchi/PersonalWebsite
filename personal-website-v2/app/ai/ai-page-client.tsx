@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { Brain, Cpu, Shield, Cloud, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { AIContactForm } from "@/components/ai-contact-form";
+import { CalendlySection } from "@/components/calendly-section";
 import { BlogPost } from "@/lib/types";
 import {
     ComicPanel,
@@ -61,7 +63,7 @@ export function AIPageClient({ posts }: AIPageClientProps) {
                         </p>
 
                         <div className="flex gap-4">
-                            <Link href="#contact">
+                            <Link href="#schedule">
                                 <Button
                                     size="lg"
                                     className="font-bold uppercase tracking-wide border-4 transition-all hover:scale-105 hover:-rotate-1"
@@ -72,7 +74,7 @@ export function AIPageClient({ posts }: AIPageClientProps) {
                                         boxShadow: `4px 4px 0 ${comicColors.neutral.darkest}`,
                                     }}
                                 >
-                                    Let's Connect
+                                    Schedule a Call
                                 </Button>
                             </Link>
                             <Link href="#insights">
@@ -119,6 +121,14 @@ export function AIPageClient({ posts }: AIPageClientProps) {
                     </motion.div>
                 </div>
             </section>
+
+            {/* Calendly Scheduling Section - Primary CTA */}
+            <CalendlySection
+                calendlyUrl={aiPage.calendly.url}
+                title={aiPage.calendly.title}
+                description={aiPage.calendly.description}
+                accentColor={comicColors.pageThemes.ai.primary}
+            />
 
             {/* Services Section */}
             <section className="py-24 border-t-4" style={{ borderColor: comicColors.neutral.darkest }}>
@@ -196,11 +206,15 @@ export function AIPageClient({ posts }: AIPageClientProps) {
                                     className="group cursor-pointer"
                                 >
                                     <ComicPanel className="overflow-hidden mb-4 aspect-[4/5]">
-                                        <img
-                                            src={post.coverImage}
-                                            alt={post.title}
-                                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                        />
+                                        <div className="relative h-full w-full">
+                                            <Image
+                                                src={post.coverImage}
+                                                alt={post.title}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            />
+                                        </div>
                                     </ComicPanel>
                                     <div className="flex items-center gap-2 text-muted-foreground text-sm mb-2">
                                         <MapPin className="h-4 w-4" />

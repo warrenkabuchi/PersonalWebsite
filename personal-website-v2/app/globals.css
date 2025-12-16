@@ -163,6 +163,11 @@
 
 @layer utilities {
 
+  /* Accessibility - Focus States */
+  .focus-comic {
+    @apply focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent focus-visible:ring-offset-2;
+  }
+
   /* Comic Panel Borders */
   .comic-border {
     border: 4px solid hsl(0, 0%, 8%);
@@ -281,4 +286,28 @@
 
 .animate-zoom-pulse {
   animation: zoom-pulse 2s ease-in-out infinite;
+}
+
+/* Enhanced focus styles for accessibility */
+*:focus-visible {
+  outline: 3px solid hsl(45, 100%, 55%);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid hsl(45, 100%, 55%);
+  outline-offset: 2px;
+}
+
+/* Skip link visibility */
+.sr-only:focus {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: nowrap;
 }

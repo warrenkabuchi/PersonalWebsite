@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Plane, MapPin, Map, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TravelWizard } from "@/components/travel-wizard";
@@ -33,10 +34,12 @@ export function TravelPageClient({ posts }: TravelPageClientProps) {
 
                 {/* Background Image with Comic Effect */}
                 <div className="absolute inset-0">
-                    <img
+                    <Image
                         src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop"
-                        alt="Travel Hero"
-                        className="absolute inset-0 h-full w-full object-cover opacity-40"
+                        alt="Travel adventures around the world"
+                        fill
+                        className="object-cover opacity-40"
+                        priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
                 </div>
@@ -118,11 +121,15 @@ export function TravelPageClient({ posts }: TravelPageClientProps) {
                                         className="group cursor-pointer"
                                     >
                                         <ComicPanel className="overflow-hidden mb-4 aspect-[4/5]">
-                                            <img
-                                                src={post.coverImage}
-                                                alt={post.title}
-                                                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                            />
+                                            <div className="relative h-full w-full">
+                                                <Image
+                                                    src={post.coverImage}
+                                                    alt={post.title}
+                                                    fill
+                                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                />
+                                            </div>
                                         </ComicPanel>
                                         <div className="flex items-center gap-2 text-muted-foreground text-sm mb-2">
                                             <MapPin className="h-4 w-4" style={{ color: comicColors.accent.green }} />
