@@ -10,6 +10,7 @@ import {
 } from "@/components/comic-effects";
 import { djPage } from "@/lib/site-content";
 import { comicColors } from "@/lib/design-tokens";
+import { CrossServiceLinks } from "@/components/cross-service-links";
 import { motion } from "framer-motion";
 import Balancer from "react-wrap-balancer";
 
@@ -107,6 +108,7 @@ export function DJPageClient() {
                                         allow="autoplay"
                                         src={mix.url}
                                         title={mix.title}
+                                        loading="lazy"
                                     />
                                 </ComicPanel>
                             </motion.div>
@@ -150,6 +152,9 @@ export function DJPageClient() {
                     </ComicPanel>
                 </div>
             </section>
+
+            {/* Cross-Service Links */}
+            <CrossServiceLinks currentService="dj" />
         </main>
     );
 }

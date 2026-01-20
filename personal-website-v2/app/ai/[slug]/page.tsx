@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { db } from "@/lib/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { BlogPost } from "@/lib/types";
@@ -7,6 +8,7 @@ import { notFound } from "next/navigation";
 import { HalftoneBackground, ComicPanel } from "@/components/comic-effects";
 import { comicColors } from "@/lib/design-tokens";
 import { Button } from "@/components/ui/button";
+import { BlogPostingSchema } from "@/components/structured-data";
 
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
     try {
@@ -28,6 +30,41 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
     }
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const post = await getBlogPost(slug);
+
+    if (!post) {
+        return {
+            title: "Post Not Found",
+            description: "The requested blog post could not be found.",
+        };
+    }
+
+    const postUrl = `https://warrenkabuchi.com/ai/${slug}`;
+
+    return {
+        title: post.title,
+        description: post.excerpt,
+        keywords: ["AI", "AI Consulting", "Enterprise AI", post.location, post.title],
+        openGraph: {
+            title: `${post.title} | Warren Kabuchi`,
+            description: post.excerpt,
+            url: postUrl,
+            type: "article",
+            publishedTime: new Date(post.date).toISOString(),
+            authors: ["Warren Kabuchi"],
+            images: [{ url: post.coverImage, width: 1200, height: 630, alt: post.title }],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description: post.excerpt,
+            images: [post.coverImage],
+        },
+    };
+}
+
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const post = await getBlogPost(slug);
@@ -42,13 +79,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         day: "numeric",
     });
 
+    const postUrl = `https://warrenkabuchi.com/ai/${slug}`;
+
     return (
-        <main className="min-h-screen bg-background text-foreground pt-16">
-            <HalftoneBackground
-                color={comicColors.accent.cyan}
-                opacity={0.05}
-                className="fixed inset-0"
+        <>
+            <BlogPostingSchema
+                title={post.title}
+                description={post.excerpt}
+                image={post.coverImage}
+                datePublished={new Date(post.date).toISOString()}
+                url={postUrl}
             />
+            <main className="min-h-screen bg-background text-foreground pt-16">
+                <HalftoneBackground
+                    color={comicColors.accent.cyan}
+                    opacity={0.05}
+                    className="fixed inset-0"
+                />
 
             {/* Hero Image */}
             <section className="relative h-[60vh] w-full overflow-hidden border-b-4" style={{ borderColor: comicColors.neutral.darkest }}>
@@ -139,6 +186,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </Link>
                 </div>
             </article>
-        </main>
+            </main>
+        </>
     );
 }

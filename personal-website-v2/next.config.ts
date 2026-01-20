@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
         hostname: 'personal-website-kabuchi.firebasestorage.app',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60 * 60 * 24 * 7, // 7 days
   },
 };
 

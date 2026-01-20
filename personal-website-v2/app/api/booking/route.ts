@@ -41,6 +41,13 @@ export async function POST(request: Request) {
         <p><strong>Interests:</strong></p>
         <p>${interests}</p>
       `;
+        } else if (type === 'newsletter') {
+            subject = `New Newsletter Signup: ${email}`;
+            htmlContent = `
+        <h1>New Newsletter Subscription</h1>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Name:</strong> ${name || "N/A"}</p>
+      `;
         } else {
             // Default to DJ Booking
             subject = `New DJ Booking Request: ${eventType} - ${name}`;

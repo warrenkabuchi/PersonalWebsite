@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { track } from "@vercel/analytics";
 import { ArrowRight, ArrowLeft, CheckCircle2, XCircle } from "lucide-react";
 import { comicColors } from "@/lib/design-tokens";
 
@@ -92,6 +93,13 @@ export function TravelWizard() {
             });
 
             if (!res.ok) throw new Error("Failed to submit");
+
+            // Track conversion event
+            track("travel_planning_request", {
+                destination: values.destination,
+                budget: values.budget,
+            });
+
             setIsSuccess(true);
         } catch (error) {
             console.error(error);

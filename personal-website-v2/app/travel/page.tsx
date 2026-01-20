@@ -59,6 +59,8 @@ async function getBlogPosts(): Promise<BlogPost[]> {
     }
 }
 
+export const revalidate = 300; // ISR: Revalidate every 5 minutes
+
 export default async function TravelPage() {
     const posts = await getBlogPosts();
     return <TravelPageClient posts={posts} />;

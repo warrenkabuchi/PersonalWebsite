@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import { comicColors } from "@/lib/design-tokens";
+import { track } from "@vercel/analytics";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, XCircle } from "lucide-react";
 
@@ -63,6 +64,12 @@ export function AIContactForm() {
             });
 
             if (!res.ok) throw new Error("Failed to submit");
+
+            // Track conversion event
+            track("ai_consultation_request", {
+                interest: values.interest,
+                hasCompany: !!values.company,
+            });
 
             setResponseMessage({
                 type: "success",

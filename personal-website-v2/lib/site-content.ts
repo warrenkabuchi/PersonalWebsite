@@ -16,6 +16,7 @@ export const navigation = {
         { href: '/', label: 'Home', theme: 'default' },
         { href: '/ai', label: 'AI Consulting', theme: 'ai' },
         { href: '/#experience', label: 'Experience', theme: 'default' },
+        { href: '/drone', label: 'Sky 360', theme: 'drone' },
         { href: '/dj', label: 'DJ', theme: 'dj' },
         { href: '/travel', label: 'Travel', theme: 'travel' },
         { href: '/#contact', label: 'Contact', theme: 'default' },
@@ -150,6 +151,7 @@ export const socialLinks = {
     github: 'https://github.com/warrenkabuchi',
     linkedin: 'https://linkedin.com/in/warrenkabuchi',
     email: 'mailto:hello@warrenkabuchi.com',
+    sky360Instagram: 'https://instagram.com/skyvisions_360',
 } as const;
 
 export const footer = {
@@ -224,3 +226,274 @@ export const travelPage = {
         description: 'Stories, photos, and insider tips from a globe-trotting adventure seeker. Let me help you craft unforgettable experiences around the world.',
     },
 } as const;
+
+export const dronePage = {
+    hero: {
+        title: 'Sky 360 Visions',
+        subtitle: 'See Your World From Every Angle',
+        description: 'Cinematic aerial footage with a twist—the drone disappears. Using cutting-edge 360° technology, we capture smooth, floating perspectives that look like magic.',
+    },
+    instagram: 'https://instagram.com/skyvisions_360',
+    gear: {
+        drone: 'Antigravity A1',
+        camera: 'Insta360 X5',
+        features: ['8K 360° Video', 'Invisible Drone', 'Indoor Capable', 'Whisper Quiet'],
+    },
+    services: [
+        {
+            id: 'real-estate',
+            title: 'Luxury Property Tours',
+            tagline: 'Real Estate',
+            description: 'Seamless one-take tours that glide from curb appeal through every room and out to the backyard. No cuts, no visible equipment—just a magical floating perspective that makes buyers feel like they\'re already home.',
+            benefits: [
+                'Single continuous shot from exterior to interior',
+                'Safe, quiet indoor flight',
+                'Smooth cinematic movement throughout',
+                'Premium content for high-end listings',
+            ],
+            icon: 'home',
+            pricing: 'Starting at $500 per property',
+        },
+        {
+            id: 'events',
+            title: 'Event & Festival Coverage',
+            tagline: 'Live Events',
+            description: 'Dynamic floating camera angles that follow performers and capture crowd energy. Get that cinematic third-person look without any visible equipment—perfect for recap videos and social content.',
+            benefits: [
+                'Both vertical and widescreen formats from one shoot',
+                'Unique angles that stand out on social media',
+                'Capture the full energy of live performances',
+                'Quick turnaround for social media highlights',
+            ],
+            icon: 'music',
+            pricing: 'Custom packages available',
+        },
+        {
+            id: 'vr-spatial',
+            title: 'Immersive 360° Content',
+            tagline: 'VR & Spatial Video',
+            description: 'Full 8K 360° aerial footage ready for Apple Vision Pro, Meta Quest, and other VR platforms. From serene nature escapes to urban exploration—create experiences that transport viewers.',
+            benefits: [
+                'Apple Vision Pro and VR headset ready',
+                'Stunning scenic and location content',
+                'Perfect for virtual tours and experiences',
+                'Future-proof for emerging platforms',
+            ],
+            icon: 'glasses',
+            pricing: 'Custom shoots or licensing available',
+        },
+        {
+            id: 'inspections',
+            title: 'Site Documentation',
+            tagline: 'Inspections & Surveys',
+            description: 'Comprehensive aerial documentation that captures every angle in a single pass. Review any direction after the flight is complete—perfect for construction progress, roof inspections, and asset management.',
+            benefits: [
+                'Full 360° documentation from safe distances',
+                'Review and zoom into any angle after the fact',
+                'Detailed records for insurance and compliance',
+                'Efficient single-visit comprehensive coverage',
+            ],
+            icon: 'hard-hat',
+            pricing: 'Project-based pricing',
+        },
+    ],
+    advantages: [
+        {
+            feature: 'Multiple Formats',
+            advantage: 'Get vertical, widescreen, and square video from a single flight',
+        },
+        {
+            feature: 'Invisible Camera',
+            advantage: 'No drone in frame—just smooth, floating cinematic footage',
+        },
+        {
+            feature: 'Perfect Every Shot',
+            advantage: 'Choose your exact framing in post-production',
+        },
+    ],
+    calendly: {
+        url: 'https://calendly.com/warrenkabuchi/drone-consultation',
+        title: 'Let\'s Talk About Your Project',
+        description: 'Book a free consultation to discuss your vision and get a custom quote.',
+    },
+} as const;
+
+// Drone Service Packages & Pricing
+export const droneServicePackages = {
+    'real-estate': {
+        name: 'Luxury Property Tours',
+        icon: 'home',
+        description: 'Seamless one-take tours that glide from curb appeal through every room.',
+        packages: [
+            {
+                tier: 'basic' as const,
+                name: 'Essential',
+                price: 500,
+                includes: ['2-3 min edited video', '10 edited photos', '48hr delivery', 'Basic color correction'],
+            },
+            {
+                tier: 'standard' as const,
+                name: 'Professional',
+                price: 800,
+                includes: ['4-5 min cinematic video', '20 edited photos', 'Social media cuts', '24hr delivery', 'Advanced color grading'],
+            },
+            {
+                tier: 'premium' as const,
+                name: 'Luxury',
+                price: 1500,
+                includes: ['8+ min cinematic tour', '50+ edited photos', 'Twilight shoot included', '360° virtual tour', 'Same-day delivery option', 'Drone + ground footage'],
+            },
+        ],
+        addOns: [
+            { id: 'rush', name: 'Rush Delivery (Same Day)', price: 200 },
+            { id: 'raw', name: 'Raw Files Included', price: 150 },
+            { id: 'twilight', name: 'Additional Twilight Shoot', price: 250 },
+            { id: 'floorplan', name: 'Aerial Floor Plan Overlay', price: 175 },
+            { id: 'social', name: 'Social Media Package (5 reels)', price: 300 },
+        ],
+        checklist: [
+            'Location scout & shot planning',
+            'Capture aerial exteriors',
+            'Capture interior walkthrough',
+            'Capture backyard/pool area',
+            'Color correction & grading',
+            'Audio/music selection',
+            'Final edit & export',
+            'Upload to delivery portal',
+            'Notify client',
+        ],
+    },
+    'events': {
+        name: 'Event & Festival Coverage',
+        icon: 'music',
+        description: 'Dynamic floating camera angles that follow performers and capture crowd energy.',
+        packages: [
+            {
+                tier: 'basic' as const,
+                name: 'Highlight',
+                price: 600,
+                includes: ['2-3 min recap video', 'Key moments coverage', '72hr delivery', '10 photos'],
+            },
+            {
+                tier: 'standard' as const,
+                name: 'Full Coverage',
+                price: 1200,
+                includes: ['5-8 min recap video', 'Full event coverage', '48hr delivery', '25 photos', 'Social cuts'],
+            },
+            {
+                tier: 'premium' as const,
+                name: 'Festival Pro',
+                price: 2500,
+                includes: ['Multiple recap videos', 'Multi-day coverage', '24hr daily highlights', '100+ photos', 'Live streaming ready', 'Dedicated operator'],
+            },
+        ],
+        addOns: [
+            { id: 'rush', name: 'Rush Delivery (24hr)', price: 300 },
+            { id: 'raw', name: 'Raw Files Included', price: 200 },
+            { id: 'live', name: 'Live Stream Setup', price: 500 },
+            { id: 'extra-day', name: 'Additional Day Coverage', price: 800 },
+            { id: 'social', name: 'Social Media Package (10 reels)', price: 400 },
+        ],
+        checklist: [
+            'Pre-event site visit',
+            'Coordinate with event staff',
+            'Capture setup/preparation',
+            'Capture main performances',
+            'Capture crowd reactions',
+            'Capture venue atmosphere',
+            'Color correction & grading',
+            'Sync to music',
+            'Final edit & export',
+            'Upload to delivery portal',
+            'Notify client',
+        ],
+    },
+    'vr-spatial': {
+        name: 'Immersive 360° Content',
+        icon: 'glasses',
+        description: 'Full 8K 360° aerial footage ready for Apple Vision Pro, Meta Quest, and VR platforms.',
+        packages: [
+            {
+                tier: 'basic' as const,
+                name: 'Explorer',
+                price: 800,
+                includes: ['Single location shoot', '5 min 360° video', '8K resolution', 'VR-ready export'],
+            },
+            {
+                tier: 'standard' as const,
+                name: 'Immersive',
+                price: 1500,
+                includes: ['Up to 3 locations', '15 min 360° video', '8K resolution', 'Spatial audio', 'Apple Vision Pro optimized'],
+            },
+            {
+                tier: 'premium' as const,
+                name: 'Virtual Tour Pro',
+                price: 3000,
+                includes: ['Unlimited locations', 'Full property/venue tour', '8K + 12K options', 'Interactive hotspots', 'Custom branding', 'All VR platforms'],
+            },
+        ],
+        addOns: [
+            { id: 'spatial-audio', name: 'Advanced Spatial Audio', price: 300 },
+            { id: 'interactive', name: 'Interactive Hotspots', price: 400 },
+            { id: 'licensing', name: 'Commercial Licensing', price: 500 },
+            { id: 'narration', name: 'Professional Narration', price: 250 },
+        ],
+        checklist: [
+            'Plan 360° shot positions',
+            'Calibrate 360° camera',
+            'Capture aerial 360° footage',
+            'Capture ground-level 360°',
+            'Stitch & process footage',
+            'Add spatial audio',
+            'Export for VR platforms',
+            'Quality check on headset',
+            'Upload to delivery portal',
+            'Notify client',
+        ],
+    },
+    'inspections': {
+        name: 'Site Documentation',
+        icon: 'hard-hat',
+        description: 'Comprehensive aerial documentation for construction, inspections, and asset management.',
+        packages: [
+            {
+                tier: 'basic' as const,
+                name: 'Quick Survey',
+                price: 400,
+                includes: ['Single site visit', '50 aerial photos', 'Basic report', 'GPS coordinates'],
+            },
+            {
+                tier: 'standard' as const,
+                name: 'Full Inspection',
+                price: 750,
+                includes: ['Detailed site coverage', '150+ photos', 'Video walkthrough', 'Annotated report', 'Thermal imaging'],
+            },
+            {
+                tier: 'premium' as const,
+                name: 'Enterprise',
+                price: 1500,
+                includes: ['Multi-site coverage', '500+ photos', '4K video documentation', '3D mapping', 'Thermal + RGB', 'Detailed analysis report', 'Monthly retainer option'],
+            },
+        ],
+        addOns: [
+            { id: 'thermal', name: 'Thermal Imaging Add-on', price: 200 },
+            { id: '3d-map', name: '3D Site Mapping', price: 400 },
+            { id: 'orthomosaic', name: 'Orthomosaic Map', price: 350 },
+            { id: 'recurring', name: 'Monthly Monitoring Setup', price: 300 },
+        ],
+        checklist: [
+            'Review site requirements',
+            'Flight path planning',
+            'Capture systematic aerial grid',
+            'Capture detail shots',
+            'Thermal scan (if applicable)',
+            'Process & organize images',
+            'Generate report',
+            'Export deliverables',
+            'Upload to delivery portal',
+            'Notify client',
+        ],
+    },
+} as const;
+
+export type DroneServiceKey = keyof typeof droneServicePackages;

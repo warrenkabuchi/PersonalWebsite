@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Brain, Cpu, Shield, Cloud, MapPin } from "lucide-react";
+import { Brain, Cpu, Shield, Cloud, MapPin, HelpCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { AIContactForm } from "@/components/ai-contact-form";
@@ -15,14 +15,37 @@ import {
 } from "@/components/comic-effects";
 import { aiPage } from "@/lib/site-content";
 import { comicColors } from "@/lib/design-tokens";
-import { motion } from "framer-motion";
+import { CrossServiceLinks } from "@/components/cross-service-links";
+import { motion, AnimatePresence } from "framer-motion";
 import Balancer from "react-wrap-balancer";
+import { useState } from "react";
+
+const aiFAQs = [
+    {
+        question: "What types of AI agents can you build with Copilot Studio?",
+        answer: "I specialize in building custom AI agents that integrate with enterprise systems like ServiceNow, Salesforce, SharePoint, and internal databases. These agents can handle customer service automation, knowledge management, internal IT support, and complex workflow orchestration with full governance controls.",
+    },
+    {
+        question: "How do you ensure AI governance and compliance?",
+        answer: "I implement comprehensive governance frameworks including prompt guardrails, content filtering, audit logging, role-based access controls, and compliance monitoring. All solutions are designed to meet enterprise security standards and regulatory requirements like SOC 2, HIPAA, and GDPR where applicable.",
+    },
+    {
+        question: "What's your approach to RAG (Retrieval-Augmented Generation) architecture?",
+        answer: "My RAG implementations use Azure AI Search or similar vector databases combined with careful chunking strategies, embedding optimization, and semantic reranking. I focus on maximizing retrieval accuracy while minimizing hallucinations through context engineering and citation validation.",
+    },
+    {
+        question: "Do you work with cloud platforms other than Azure?",
+        answer: "While I specialize in Microsoft Azure and Copilot Studio, I also have extensive experience with Google Cloud Platform (Vertex AI, Document AI) and AWS (Bedrock, SageMaker). I can design multi-cloud architectures or help migrate between platforms.",
+    },
+];
 
 interface AIPageClientProps {
     posts: BlogPost[];
 }
 
 export function AIPageClient({ posts }: AIPageClientProps) {
+    const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+
     const iconMap = {
         brain: Brain,
         shield: Shield,
@@ -236,6 +259,64 @@ export function AIPageClient({ posts }: AIPageClientProps) {
                 )}
             </section>
 
+            {/* FAQ Section */}
+            <section id="faq" className="py-24 px-4 md:px-8 max-w-4xl mx-auto border-t-4" style={{ borderColor: comicColors.neutral.darkest }}>
+                <div className="text-center mb-12">
+                    <ComicBadge color={comicColors.pageThemes.ai.secondary} className="mb-6 inline-flex">
+                        <HelpCircle className="h-4 w-4 inline mr-2" />
+                        FAQ
+                    </ComicBadge>
+                    <h2 className="text-3xl md:text-4xl font-display font-black mb-4">
+                        <span className="comic-text-shadow">Frequently Asked Questions</span>
+                    </h2>
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        <Balancer>
+                            Common questions about AI consulting, Copilot Studio, and enterprise governance.
+                        </Balancer>
+                    </p>
+                </div>
+
+                <div className="space-y-4">
+                    {aiFAQs.map((faq, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                        >
+                            <ComicPanel className="overflow-hidden">
+                                <button
+                                    onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
+                                    className="w-full p-6 flex items-center justify-between text-left"
+                                >
+                                    <h3 className="font-display font-bold text-lg pr-4">{faq.question}</h3>
+                                    <ChevronDown
+                                        className={`h-5 w-5 flex-shrink-0 transition-transform duration-300 ${openFAQ === index ? "rotate-180" : ""}`}
+                                        style={{ color: comicColors.pageThemes.ai.primary }}
+                                    />
+                                </button>
+                                <AnimatePresence>
+                                    {openFAQ === index && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                                                {faq.answer}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </ComicPanel>
+                        </motion.div>
+                    ))}
+                </div>
+            </section>
+
             {/* Consultation Form Section */}
             <section id="contact" className="py-24 px-4 md:px-8 max-w-3xl mx-auto border-t-4" style={{ borderColor: comicColors.neutral.darkest }}>
                 <div className="text-center mb-12">
@@ -258,6 +339,9 @@ export function AIPageClient({ posts }: AIPageClientProps) {
                     <AIContactForm />
                 </ComicPanel>
             </section>
+
+            {/* Cross-Service Links */}
+            <CrossServiceLinks currentService="ai" />
         </main>
     );
 }

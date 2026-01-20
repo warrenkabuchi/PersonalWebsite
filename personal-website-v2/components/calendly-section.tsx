@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { Calendar } from "lucide-react";
+import { track } from "@vercel/analytics";
 import { ComicPanel, ComicBadge } from "@/components/comic-effects";
 import { comicColors } from "@/lib/design-tokens";
 import Balancer from "react-wrap-balancer";
@@ -26,11 +27,30 @@ export function CalendlySection({
         script.async = true;
         document.body.appendChild(script);
 
+        // Track when Calendly section is viewed
+        track("calendly_section_viewed", {
+            title: title,
+        });
+
+        // Listen for Calendly events
+        const handleCalendlyEvent = (e: MessageEvent) => {
+            if (e.data.event && e.data.event.indexOf("calendly") === 0) {
+                if (e.data.event === "calendly.event_scheduled") {
+                    track("calendly_meeting_scheduled", {
+                        title: title,
+                    });
+                }
+            }
+        };
+
+        window.addEventListener("message", handleCalendlyEvent);
+
         return () => {
             // Cleanup
             document.body.removeChild(script);
+            window.removeEventListener("message", handleCalendlyEvent);
         };
-    }, []);
+    }, [title]);
 
     return (
         <section

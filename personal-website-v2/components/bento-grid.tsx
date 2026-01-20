@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Music, Plane, Brain, User } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface BentoItemProps {
@@ -19,7 +20,13 @@ const BentoItem = ({ title, description, icon, href, className, bgImage }: Bento
     <Link href={href} className={cn("group relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/50 p-6 transition-all hover:border-zinc-700 hover:bg-zinc-900", className)}>
       {bgImage && (
         <div className="absolute inset-0 z-0">
-          <img src={bgImage} alt={title} className="h-full w-full object-cover opacity-40 transition-transform duration-500 group-hover:scale-110" />
+          <Image
+            src={bgImage}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover opacity-40 transition-transform duration-500 group-hover:scale-110"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
         </div>
       )}

@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { comicColors } from "@/lib/design-tokens";
+import { track } from "@vercel/analytics";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, XCircle } from "lucide-react";
 
@@ -70,6 +71,11 @@ export function BookingForm() {
             if (!response.ok) {
                 throw new Error("Failed to submit booking request.");
             }
+
+            // Track conversion event
+            track("dj_booking_request", {
+                eventType: values.eventType,
+            });
 
             setMessage({
                 type: "success",

@@ -3,7 +3,26 @@ import { db } from "@/lib/firebase";
 import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
 import { BlogPost } from "@/lib/types";
 import { AIPageClient } from "./ai-page-client";
-import { ServiceSchema } from "@/components/structured-data";
+import { ServiceSchema, FAQSchema } from "@/components/structured-data";
+
+const aiFAQs = [
+    {
+        question: "What types of AI agents can you build with Copilot Studio?",
+        answer: "I specialize in building custom AI agents that integrate with enterprise systems like ServiceNow, Salesforce, SharePoint, and internal databases. These agents can handle customer service automation, knowledge management, internal IT support, and complex workflow orchestration with full governance controls.",
+    },
+    {
+        question: "How do you ensure AI governance and compliance?",
+        answer: "I implement comprehensive governance frameworks including prompt guardrails, content filtering, audit logging, role-based access controls, and compliance monitoring. All solutions are designed to meet enterprise security standards and regulatory requirements like SOC 2, HIPAA, and GDPR where applicable.",
+    },
+    {
+        question: "What's your approach to RAG (Retrieval-Augmented Generation) architecture?",
+        answer: "My RAG implementations use Azure AI Search or similar vector databases combined with careful chunking strategies, embedding optimization, and semantic reranking. I focus on maximizing retrieval accuracy while minimizing hallucinations through context engineering and citation validation.",
+    },
+    {
+        question: "Do you work with cloud platforms other than Azure?",
+        answer: "While I specialize in Microsoft Azure and Copilot Studio, I also have extensive experience with Google Cloud Platform (Vertex AI, Document AI) and AWS (Bedrock, SageMaker). I can design multi-cloud architectures or help migrate between platforms.",
+    },
+];
 
 export const metadata: Metadata = {
     title: "AI Consulting",
@@ -60,6 +79,8 @@ async function getBlogPosts(): Promise<BlogPost[]> {
     }
 }
 
+export const revalidate = 300; // ISR: Revalidate every 5 minutes
+
 export default async function AIPage() {
     const posts = await getBlogPosts();
     return (
@@ -69,6 +90,7 @@ export default async function AIPage() {
                 description="Enterprise AI agent development, governance frameworks, and Copilot Studio implementation."
                 serviceType="AI Consulting"
             />
+            <FAQSchema faqs={aiFAQs} />
             <AIPageClient posts={posts} />
         </>
     );
